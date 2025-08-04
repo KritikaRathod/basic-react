@@ -1,45 +1,46 @@
 import React from "react";
 
-class App extends React.Component {
-  constructor() {
-    super();
-  }
+let ctx = React.createContext();
 
+class App extends React.Component {
   render() {
     return (
-      <div>
+      <ctx.Provider value={"data from context"}>
         <h1>This is App</h1>
-        <Comp1 data={"kritika"} />
-      </div>
+        <Comp1 />
+      </ctx.Provider>
     );
   }
 }
 
-function Comp1(props) {
+function Comp1() {
   return (
     <div>
       <h1>Component1</h1>
-      <Comp2 data={props.data} />
+      <Comp2 />
     </div>
   );
 }
 
-function Comp2(props) {
+function Comp2() {
   return (
     <div>
       <h1>Component2</h1>
-      <Comp3 data={props.data} />
-      <p>Data: {props.data}</p>
+      <Comp3 />
     </div>
   );
 }
 
-function Comp3(props) {
+function Comp3() {
   return (
-    <div>
-      <h1>Component3</h1>
-      <p>Data: {props.data}</p>
-    </div>
+    <ctx.Consumer>
+      {(value) => (
+        <div>
+          <h1>Component3</h1>
+          <p>Data: {value}</p>
+        </div>
+      )}
+    </ctx.Consumer>
   );
 }
 
