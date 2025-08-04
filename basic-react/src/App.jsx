@@ -9,11 +9,25 @@ class App extends React.Component {
     return (
       <div>
         <h1>This is App</h1>
-        <p>name</p>
-        <pri
+        <MenuItem name={"pizza"} price={200} disc={10}/>
+        <MenuItem name={"jgklj"}/>
       </div>
     );
+   
   }
 }
+  
+     function MenuItem(props) {
+      return(
+        <div>
+        <p>{props.name}</p>
+        <p>{props.price}</p>
+        <p>{props.disc}</p>
+        </div>
+      );
+      
+    }
+  
+
 
 export default App;
